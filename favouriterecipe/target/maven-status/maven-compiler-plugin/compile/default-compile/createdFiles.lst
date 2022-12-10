@@ -1,0 +1,6 @@
+com\recipe\favouriterecipe\FavouriterecipeApplication.class
+com\recipe\favouriterecipe\model\Example.class
+com\recipe\favouriterecipe\controller\RecipeController.class
+com\recipe\favouriterecipe\controller\repos\DbRepository.class
+com\recipe\favouriterecipe\controller\service\RecipeService.class
+com\recipe\favouriterecipe\model\Recipe.class
