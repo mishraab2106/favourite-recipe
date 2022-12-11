@@ -18,7 +18,8 @@ private DbRepository repo;
 private Recipe recipe;
 
 public List<Recipe>allrecipe() {
-	return repo.findAll();
+//	return repo.findAll();
+	return repo.findallrecipe();
 } 
 
 public String addNewRecipe(Recipe recipe) {

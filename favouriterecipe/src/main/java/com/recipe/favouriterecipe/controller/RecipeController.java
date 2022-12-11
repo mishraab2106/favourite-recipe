@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.recipe.favouriterecipe.controller.service.RecipeService;
-import com.recipe.favouriterecipe.model.Example;
 import com.recipe.favouriterecipe.model.Recipe;
 
 @RestController
