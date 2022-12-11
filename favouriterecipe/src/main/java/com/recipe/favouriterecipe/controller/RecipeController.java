@@ -42,6 +42,19 @@ public String addNewRecipe(@Validated @RequestBody Recipe recipe){
 		
 }
 
+@GetMapping(value = "/vegeterian")
+public List<Recipe> findvegeterian(){
+		
+	return service.findVegeterian();
+		
+}
+
+@GetMapping(value = "/potatoes/servings")
+public List<Recipe> findPotatoesAndServings(){
+		
+	return service.findPotatoesAndServings();
+		
+}
 
 
 }

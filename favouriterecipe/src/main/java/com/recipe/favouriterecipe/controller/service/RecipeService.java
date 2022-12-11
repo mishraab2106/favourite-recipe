@@ -18,13 +18,23 @@ private DbRepository repo;
 private Recipe recipe;
 
 public List<Recipe>allrecipe() {
-//	return repo.findAll();
+	return repo.findAll();
 //	return repo.findallrecipe();
-	return repo.findinstructionsrecipe();
+//	return repo.findinstructionsrecipe();
 } 
 
 public String addNewRecipe(Recipe recipe) {
 	 repo.save(recipe);
 	 return "Saved Data successfully";
+}
+
+public List<Recipe>findPotatoesAndServings() {
+	return repo.findPotatoesAndservings();
+
+} 
+
+public List<Recipe>findVegeterian() {
+	return repo.findByvegeterian();
+
 } 
 }

@@ -33,6 +33,13 @@ public class Recipe {
 	@NotEmpty
 	@JsonProperty("name")
 	private String name;
+	
+	@Column(name="vegeterian")
+	@NotEmpty
+	@JsonProperty("vegeterian")
+	private String vegeterian;
+	
+	
 	@Column(name="Ingredients")
 	@NotEmpty
 	@JsonProperty("ingredients")
@@ -79,6 +86,12 @@ public class Recipe {
 	public String toString() {
 		return "Recipe [id=" + id + ", name=" + name + ", ingredients=" + Arrays.toString(ingredients)
 				+ ", instructions=" + Arrays.toString(instructions) + ", servings=" + servings + "]";
+	}
+	public String getVegeterian() {
+		return vegeterian;
+	}
+	public void setVegeterian(String vegeterian) {
+		this.vegeterian = vegeterian;
 	}
 
 }
