@@ -53,14 +53,19 @@ public Recipe getById(long id) {
 }
 
 
-public List<Recipe> findFilterRecipe(String ingredients, int servings, String instructions, String veg) {
-	// TODO Auto-generated method stub
-//	return repo.findFilterRecipe(ingredients, servings, instructions, veg);
-
+public List<Recipe> findFilterRecipe(String ingredientscondition,String ingredients, int servings, String instructions, String veg) {
+    
+	System.out.println("ingredientscondition " +ingredientscondition);
+	if (ingredientscondition.equals("exclude")) {
+		return repo.filterRecipeexclude(ingredients, servings, instructions, veg);
+	}
+		
 		return repo.filterRecipeinclude(ingredients,servings,instructions,veg);
+		
+	
 
 		
-	//	return repo.filterRecipeexclude(ingredients, servings, instructions, veg);
+
 	}
 	
 

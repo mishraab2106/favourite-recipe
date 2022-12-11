@@ -73,10 +73,10 @@ public List<Recipe> findvegeterian(@RequestParam String veg ){
 }
 
 @GetMapping(value = "/filterrecipe")
-public List<Recipe> findfilteredreceipe(@RequestParam(value="veg",defaultValue="yes") String veg,@RequestParam(value="servings",defaultValue="1") int servings,
+public List<Recipe> findfilteredreceipe(@RequestParam(value="ingredientscondition",defaultValue="include") String ingredientscondition,@RequestParam(value="veg",defaultValue="yes") String veg,@RequestParam(value="servings",defaultValue="1") int servings,
 		@RequestParam(value="ingredients",required=false) String ingredients,@RequestParam(value="instructions",required=false) String instructions){
 	
-	return service.findFilterRecipe(ingredients, servings, instructions, veg);
+	return service.findFilterRecipe(ingredientscondition,ingredients, servings, instructions, veg);
 	
 		
 }
