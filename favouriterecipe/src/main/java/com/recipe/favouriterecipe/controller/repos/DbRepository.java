@@ -13,4 +13,7 @@ public interface DbRepository extends JpaRepository<Recipe,Long>{
 	@Query(value = "SELECT * FROM recipe ",nativeQuery = true)
 	List<Recipe> findallrecipe();
 	
+	@Query(value = "select * from recipe where ingredients LIKE '%honey%' ",nativeQuery = true)
+	List<Recipe> findinstructionsrecipe();
+	
 }

@@ -19,7 +19,8 @@ private Recipe recipe;
 
 public List<Recipe>allrecipe() {
 //	return repo.findAll();
-	return repo.findallrecipe();
+//	return repo.findallrecipe();
+	return repo.findinstructionsrecipe();
 } 
 
 public String addNewRecipe(Recipe recipe) {
