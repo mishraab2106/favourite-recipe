@@ -29,8 +29,7 @@ import com.recipe.favouriterecipe.service.RecipeService;
 public class RecipeController {
 @Autowired
 private RecipeService service;
-@Autowired
-private DbRepository repo;
+
 
 
 	
@@ -39,7 +38,7 @@ List<Recipe> allrecipe(){
 	return service.allrecipe();
 	
 }
-@RequestMapping(value = "/newrecipe", method = RequestMethod.POST)
+@RequestMapping(value = "/addrecipe", method = RequestMethod.POST)
 
 public String addNewRecipe(@Validated @RequestBody Recipe recipe){
 	return service.addNewRecipe(recipe);		
@@ -47,28 +46,38 @@ public String addNewRecipe(@Validated @RequestBody Recipe recipe){
 
 @PutMapping("/updaterecipe")
 public ResponseEntity<Recipe> updateRecipe(@RequestParam long id,@RequestBody Recipe recipe) {
-	Recipe updaterecipe=repo.getById(id);
+	Recipe updaterecipe=service.getById(id);
 	
 	updaterecipe.setName(recipe.getName());
 	updaterecipe.setIngredients(recipe.getIngredients());
 	updaterecipe.setInstructions(recipe.getInstructions());
 	updaterecipe.setVegeterian(recipe.getVegeterian());
 	updaterecipe.setServings(recipe.getServings());
-	 repo.save(updaterecipe);
+	 service.addNewRecipe(updaterecipe);
 	return ResponseEntity.ok(updaterecipe);
 	
 }
 
 @DeleteMapping("/deleterecipe")
 public String deleterecipe(@RequestParam long id,@RequestBody Recipe recipe) {
-	repo.deleteById(id);
+	
+	service.deleterecipe(id);
 	return "Deleted recipe with id " +id;	
 }
 
-@GetMapping(value = "/allrecipe")
+@GetMapping(value = "/vegrecipe")
 public List<Recipe> findvegeterian(@RequestParam String veg ){
 		
 	return service.findVegeterian(veg);
+		
+}
+
+@GetMapping(value = "/filterrecipe")
+public List<Recipe> findfilteredreceipe(@RequestParam(value="veg",defaultValue="yes") String veg,@RequestParam(value="servings",defaultValue="1") int servings,
+		@RequestParam(value="ingredients",required=false) String ingredients,@RequestParam(value="instructions",required=false) String instructions){
+	
+	return service.findFilterRecipe(ingredients, servings, instructions, veg);
+	
 		
 }
 
@@ -79,8 +88,8 @@ public List<Recipe> findPotatoesAndServings(@RequestParam("ingredients") String 
 		
 }
 
-@GetMapping(value = "/ingredients/{ingredients}/instructions/{instructions}")
-public List<Recipe> findOvenWithoutSalmon(@PathVariable String ingredients,@PathVariable String instructions){
+@GetMapping(value = "/withoutingredientsandinstructions")
+public List<Recipe> findOvenWithoutSalmon(@RequestParam("ingredients") String ingredients,@RequestParam("instructions") String instructions){
 		
 	return service.findOvenWithoutSalmon(ingredients,instructions);
 		

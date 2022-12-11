@@ -23,6 +23,13 @@ public interface DbRepository extends JpaRepository<Recipe,Long>{
 	List<Recipe> findPotatoesAndservings(@Param("ingredients")String ingredients,@Param("servings") int servings);
 	@Query(value="select * from recipe where ingredients NOT LIKE CONCAT ('%',:ingredients,'%') AND instructions LIKE CONCAT ('%',:instructions,'%')",nativeQuery = true)
 	List<Recipe> findOvenWithoutSalmon(@Param("ingredients")String ingredients,@Param("instructions")String instructions);
+//	@Query(value = "select * from recipe where ingredients LIKE CONCAT ('%',:ingredients,'%') AND servings= :servings AND LIKE CONCAT ('%',:instructions,'%') AND vegeterian= :vegeterian",nativeQuery = true)
+//	List<Recipe> findFilterRecipe(@Param("ingredients")String ingredients,@Param("servings") int servings,@Param("instructions")String instructions,@Param("vegeterian") String veg);
 	
 	
+	@Query(value = "select * from recipe where ingredients iLIKE CONCAT ('%',:ingredients,'%') AND instructions iLIKE CONCAT ('%',:instructions,'%') AND servings= :servings AND vegeterian= :vegeterian",nativeQuery = true)
+	List<Recipe> filterRecipeinclude(@Param("ingredients")String ingredients,@Param("servings")int servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
+	
+	@Query(value = "select * from recipe where ingredients NOT iLIKE CONCAT ('%',:ingredients,'%') AND instructions iLIKE CONCAT ('%',:instructions,'%') AND servings= :servings AND vegeterian= :vegeterian",nativeQuery = true)
+	List<Recipe> filterRecipeexclude(@Param("ingredients")String ingredients,@Param("servings")int servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
 }

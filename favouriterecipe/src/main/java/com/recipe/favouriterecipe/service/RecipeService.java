@@ -41,4 +41,27 @@ public List<Recipe>findOvenWithoutSalmon(String ingredients,String instructions)
 	return repo.findOvenWithoutSalmon(ingredients,instructions);
 
 }
+
+public void deleterecipe(long id) {
+	repo.deleteById(id);
+	
+}
+
+public Recipe getById(long id) {
+	// TODO Auto-generated method stub
+	return repo.getById(id);
+}
+
+
+public List<Recipe> findFilterRecipe(String ingredients, int servings, String instructions, String veg) {
+	// TODO Auto-generated method stub
+//	return repo.findFilterRecipe(ingredients, servings, instructions, veg);
+
+		return repo.filterRecipeinclude(ingredients,servings,instructions,veg);
+
+		
+	//	return repo.filterRecipeexclude(ingredients, servings, instructions, veg);
+	}
+	
+
 }
