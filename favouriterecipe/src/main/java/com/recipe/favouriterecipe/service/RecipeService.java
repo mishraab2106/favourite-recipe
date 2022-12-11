@@ -28,7 +28,7 @@ public String addNewRecipe(Recipe recipe) {
 	 return "Saved Data successfully";
 }
 
-public List<Recipe>findPotatoesAndServings(String ingredients,int servings) {
+public List<Recipe>findPotatoesAndServings(String ingredients,long servings) {
 	return repo.findPotatoesAndservings(ingredients,servings);
 
 } 
