@@ -51,13 +51,8 @@ public class Recipe {
 	@Column(name="Servings")
 	@NotNull
 	@JsonProperty("servings")
-	 private int servings;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
+	 private Long servings;
+
 	public String getName() {
 		return name;
 	}
@@ -76,22 +71,31 @@ public class Recipe {
 	public void setInstructions(String[] instructions) {
 		this.instructions = instructions;
 	}
-	public int getServings() {
-		return servings;
-	}
-	public void setServings(int servings) {
-		this.servings = servings;
-	}
-	@Override
-	public String toString() {
-		return "Recipe [id=" + id + ", name=" + name + ", ingredients=" + Arrays.toString(ingredients)
-				+ ", instructions=" + Arrays.toString(instructions) + ", servings=" + servings + "]";
-	}
+
+
 	public String getVegeterian() {
 		return vegeterian;
 	}
 	public void setVegeterian(String vegeterian) {
 		this.vegeterian = vegeterian;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public Long getServings() {
+		return servings;
+	}
+	public void setServings(Long servings) {
+		this.servings = servings;
+	}
+	@Override
+	public String toString() {
+		return "Recipe [id=" + id + ", name=" + name + ", vegeterian=" + vegeterian + ", ingredients="
+				+ Arrays.toString(ingredients) + ", instructions=" + Arrays.toString(instructions) + ", servings="
+				+ servings + "]";
 	}
 
 }

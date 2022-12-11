@@ -65,35 +65,34 @@ public String deleterecipe(@RequestParam long id,@RequestBody Recipe recipe) {
 	return "Deleted recipe with id " +id;	
 }
 
-@GetMapping(value = "/vegrecipe")
-public List<Recipe> findvegeterian(@RequestParam String veg ){
-		
-	return service.findVegeterian(veg);
-		
-}
 
 @GetMapping(value = "/filterrecipe")
-public List<Recipe> findfilteredreceipe(@RequestParam(value="ingredientscondition",defaultValue="include") String ingredientscondition,@RequestParam(value="veg",defaultValue="yes") String veg,@RequestParam(value="servings",defaultValue="1") int servings,
-		@RequestParam(value="ingredients",required=false) String ingredients,@RequestParam(value="instructions",required=false) String instructions){
+public List<Recipe> findfilteredreceipe(@RequestParam(value="ingredientscondition",defaultValue="include") String ingredientscondition,@RequestParam(value="veg",defaultValue="yes") String veg,@RequestParam(value="servings",defaultValue="") Long servings,
+		@RequestParam(value="ingredients",defaultValue="") String ingredients,@RequestParam(value="instructions",defaultValue="") String instructions){
 	
-	return service.findFilterRecipe(ingredientscondition,ingredients, servings, instructions, veg);
-	
-		
+	System.out.println("servings "+servings);
+	System.out.println("instructions "+instructions);
+	if(ingredients.equals("")&&instructions.equals("")&&servings==null) {
+		System.out.println("ingredients "+ingredients);
+		return service.findVegeterian(veg);
+	}
+		return service.findFilterRecipe(ingredientscondition,ingredients, servings, instructions, veg);
+					
 }
 
-@GetMapping(value = "/recipe")
-public List<Recipe> findPotatoesAndServings(@RequestParam("ingredients") String ingredients,@RequestParam("servings") int servings){
-		
-	return service.findPotatoesAndServings(ingredients,servings);
-		
-}
+//@GetMapping(value = "/recipe")
+//public List<Recipe> findPotatoesAndServings(@RequestParam("ingredients") String ingredients,@RequestParam("servings") int servings){
+//		
+//	return service.findPotatoesAndServings(ingredients,servings);
+//		
+//}
 
-@GetMapping(value = "/withoutingredientsandinstructions")
-public List<Recipe> findOvenWithoutSalmon(@RequestParam("ingredients") String ingredients,@RequestParam("instructions") String instructions){
-		
-	return service.findOvenWithoutSalmon(ingredients,instructions);
-		
-}
+//@GetMapping(value = "/withoutingredientsandinstructions")
+//public List<Recipe> findOvenWithoutSalmon(@RequestParam("ingredients") String ingredients,@RequestParam("instructions") String instructions){
+//		
+//	return service.findOvenWithoutSalmon(ingredients,instructions);
+//		
+//}
 
 
 }

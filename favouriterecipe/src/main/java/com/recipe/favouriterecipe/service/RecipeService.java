@@ -53,7 +53,7 @@ public Recipe getById(long id) {
 }
 
 
-public List<Recipe> findFilterRecipe(String ingredientscondition,String ingredients, int servings, String instructions, String veg) {
+public List<Recipe> findFilterRecipe(String ingredientscondition,String ingredients, Long servings, String instructions, String veg) {
     
 	System.out.println("ingredientscondition " +ingredientscondition);
 	if (ingredientscondition.equals("exclude")) {

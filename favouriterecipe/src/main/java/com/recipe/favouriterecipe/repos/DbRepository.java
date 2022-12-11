@@ -28,8 +28,8 @@ public interface DbRepository extends JpaRepository<Recipe,Long>{
 	
 	
 	@Query(value = "select * from recipe where ingredients iLIKE CONCAT ('%',:ingredients,'%') AND instructions iLIKE CONCAT ('%',:instructions,'%') AND servings= :servings AND vegeterian= :vegeterian",nativeQuery = true)
-	List<Recipe> filterRecipeinclude(@Param("ingredients")String ingredients,@Param("servings")int servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
+	List<Recipe> filterRecipeinclude(@Param("ingredients")String ingredients,@Param("servings")Long servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
 	
 	@Query(value = "select * from recipe where ingredients NOT iLIKE CONCAT ('%',:ingredients,'%') AND instructions iLIKE CONCAT ('%',:instructions,'%') AND servings= :servings AND vegeterian= :vegeterian",nativeQuery = true)
-	List<Recipe> filterRecipeexclude(@Param("ingredients")String ingredients,@Param("servings")int servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
+	List<Recipe> filterRecipeexclude(@Param("ingredients")String ingredients,@Param("servings")Long servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
 }
