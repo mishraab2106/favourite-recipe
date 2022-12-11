@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -43,24 +44,24 @@ public String addNewRecipe(@Validated @RequestBody Recipe recipe){
 		
 }
 
-@GetMapping(value = "/{vegeterian}")
-public List<Recipe> findvegeterian(@PathVariable String vegeterian ){
+@GetMapping(value = "/allrecipe")
+public List<Recipe> findvegeterian(@RequestParam String veg ){
 		
-	return service.findVegeterian(vegeterian);
+	return service.findVegeterian(veg);
 		
 }
 
-@GetMapping(value = "/ingredients/{ingredients}/servings/{servings}")
-public List<Recipe> findPotatoesAndServings(@PathVariable String ingredients,@PathVariable int servings){
+@GetMapping(value = "/recipe")
+public List<Recipe> findPotatoesAndServings(@RequestParam("ingredients") String ingredients,@RequestParam("servings") int servings){
 		
 	return service.findPotatoesAndServings(ingredients,servings);
 		
 }
 
-@GetMapping(value = "/withoutsalmon/oven")
-public List<Recipe> findOvenWithoutSalmon(){
+@GetMapping(value = "/ingredients/{ingredients}/instructions/{instructions}")
+public List<Recipe> findOvenWithoutSalmon(@PathVariable String ingredients,@PathVariable String instructions){
 		
-	return service.findOvenWithoutSalmon();
+	return service.findOvenWithoutSalmon(ingredients,instructions);
 		
 }
 

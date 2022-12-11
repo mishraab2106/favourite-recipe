@@ -19,7 +19,8 @@ public interface DbRepository extends JpaRepository<Recipe,Long>{
 //	@Query(value = "select * from recipe where ingredients LIKE '%ingredients%' AND servings='4'",nativeQuery = true)
 	@Query(value = "select * from recipe where ingredients LIKE CONCAT ('%',:ingredients,'%') AND servings= :servings", nativeQuery = true)
 	List<Recipe> findPotatoesAndservings(@Param("ingredients")String ingredients,@Param("servings") int servings);
-	@Query(value="select * from recipe where ingredients NOT LIKE '%salmon%' AND instructions LIKE '%oven%'",nativeQuery = true)
-	List<Recipe> findOvenWithoutSalmon();
+	@Query(value="select * from recipe where ingredients NOT LIKE CONCAT ('%',:ingredients,'%') AND instructions LIKE CONCAT ('%',:instructions,'%')",nativeQuery = true)
+	List<Recipe> findOvenWithoutSalmon(@Param("ingredients")String ingredients,@Param("instructions")String instructions);
+	
 	
 }
