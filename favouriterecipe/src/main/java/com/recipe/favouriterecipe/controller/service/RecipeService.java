@@ -28,13 +28,13 @@ public String addNewRecipe(Recipe recipe) {
 	 return "Saved Data successfully";
 }
 
-public List<Recipe>findPotatoesAndServings() {
-	return repo.findPotatoesAndservings();
+public List<Recipe>findPotatoesAndServings(String ingredients,int servings) {
+	return repo.findPotatoesAndservings(ingredients,servings);
 
 } 
 
-public List<Recipe>findVegeterian() {
-	return repo.findByvegeterian();
+public List<Recipe>findVegeterian(String veg) {
+	return repo.findByvegeterian(veg);
 
 } 
 public List<Recipe>findOvenWithoutSalmon() {
