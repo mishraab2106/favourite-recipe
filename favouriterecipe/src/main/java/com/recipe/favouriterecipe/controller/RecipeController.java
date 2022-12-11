@@ -56,5 +56,12 @@ public List<Recipe> findPotatoesAndServings(){
 		
 }
 
+@GetMapping(value = "/withoutsalmon/oven")
+public List<Recipe> findOvenWithoutSalmon(){
+		
+	return service.findOvenWithoutSalmon();
+		
+}
+
 
 }

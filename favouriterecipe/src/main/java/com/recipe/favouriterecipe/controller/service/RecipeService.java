@@ -37,4 +37,8 @@ public List<Recipe>findVegeterian() {
 	return repo.findByvegeterian();
 
 } 
+public List<Recipe>findOvenWithoutSalmon() {
+	return repo.findOvenWithoutSalmon();
+
+}
 }
