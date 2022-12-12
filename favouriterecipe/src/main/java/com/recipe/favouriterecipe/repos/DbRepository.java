@@ -32,4 +32,9 @@ public interface DbRepository extends JpaRepository<Recipe,Long>{
 	
 	@Query(value = "select * from recipe where ingredients NOT iLIKE CONCAT ('%',:ingredients,'%') AND instructions iLIKE CONCAT ('%',:instructions,'%') AND servings= :servings AND vegeterian= :vegeterian",nativeQuery = true)
 	List<Recipe> filterRecipeexclude(@Param("ingredients")String ingredients,@Param("servings")Long servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
+    
+	@Query(value="insert into recipe (id,ingredients,instructions,name,servings,vegeterian) values (:id,:ingredients,:instructions,:name,:servings,:vegeterian",nativeQuery = true)
+	void insertrecipe(@Param("id")long id,@Param("ingredients")String ingredients,@Param("instructions")String instructions,@Param("name")String name,@Param("servings")long servings,@Param("vegeterian")String vegeterian);
+	
+
 }

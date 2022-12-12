@@ -4,7 +4,7 @@ insert into recipe (ingredients,instructions,name,servings,vegeterian) values
 
 
 insert into recipe (ingredients,instructions,name,servings,vegeterian) values
-('boiled water, potatoes,oil','Ignite oven,Boil water, Pour boiling hot water into a mug,Mix and let the potatoes for 3-5 minutes, Add oil and mix again','',4,'yes');
+('boiled water, potatoes,oil','Ignite oven,Boil water, Pour boiling hot water into a mug,Mix and let the potatoes for 3-5 minutes, Add oil and mix again','Potato dish',4,'yes');
 
 
 insert into recipe (ingredients,instructions,name,servings,vegeterian) values
