@@ -1,5 +1,6 @@
 package com.recipe.favouriterecipe.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Component
 @Entity
 @Table(name="Recipe")
-public class Recipe {
+public class Recipe implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
