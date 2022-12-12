@@ -33,7 +33,7 @@ private RecipeService service;
 
 
 	
-@GetMapping("/all")
+@GetMapping("/allrecipe")
 List<Recipe> allrecipe(){
 	return service.allrecipe();
 	
