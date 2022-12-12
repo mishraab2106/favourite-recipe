@@ -1,14 +1,4 @@
 
-docker build -t favourite-recipe.jar .
-
-Step 1: Run command from the project directory codingtask
-docker build -t favourite-recipe.jar .
-
-Step 2: Run the below command to start the image
-docker run -v ./recipe:/etc/recipe -p 8080:8080 favourite-recipe.jar 
-
-
-
 Add a Recipe
 
 http://localhost:8080/addrecipe

@@ -1,3 +1,0 @@
-2022-12-12 12:12:36 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPE" already exists; SQL statement:
-CREATE TABLE recipe( id INT, name varchar(255) , vegeterian varchar(255), Ingredients JSON, Instructions JSON , Servings INT ) [42101-214]

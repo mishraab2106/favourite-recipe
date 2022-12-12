@@ -97,7 +97,7 @@ public List<Recipe> findPotatoesAndServings(@RequestParam("ingredients") String 
 
 @GetMapping(value = "/recipewithoutingandins")
 public List<Recipe> findOvenWithoutSalmon(@RequestParam("ingredients") String ingredients,@RequestParam("instructions") String instructions){
-		
+	System.out.println("ingredients "+ingredients);
 	return service.findOvenWithoutSalmon(ingredients,instructions);
 		
 }
