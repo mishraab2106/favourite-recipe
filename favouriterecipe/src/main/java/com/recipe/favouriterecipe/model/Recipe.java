@@ -1,5 +1,6 @@
 package com.recipe.favouriterecipe.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Component
 @Entity
 @Table(name="Recipe")
-public class Recipe {
+public class Recipe implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +34,13 @@ public class Recipe {
 	@NotEmpty
 	@JsonProperty("name")
 	private String name;
+	
+	@Column(name="vegeterian")
+	@NotEmpty
+	@JsonProperty("vegeterian")
+	private String vegeterian;
+	
+	
 	@Column(name="Ingredients")
 	@NotEmpty
 	@JsonProperty("ingredients")
@@ -44,13 +52,8 @@ public class Recipe {
 	@Column(name="Servings")
 	@NotNull
 	@JsonProperty("servings")
-	 private int servings;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
+	 private Long servings;
+
 	public String getName() {
 		return name;
 	}
@@ -69,16 +72,31 @@ public class Recipe {
 	public void setInstructions(String[] instructions) {
 		this.instructions = instructions;
 	}
-	public int getServings() {
+
+
+	public String getVegeterian() {
+		return vegeterian;
+	}
+	public void setVegeterian(String vegeterian) {
+		this.vegeterian = vegeterian;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public Long getServings() {
 		return servings;
 	}
-	public void setServings(int servings) {
+	public void setServings(Long servings) {
 		this.servings = servings;
 	}
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", name=" + name + ", ingredients=" + Arrays.toString(ingredients)
-				+ ", instructions=" + Arrays.toString(instructions) + ", servings=" + servings + "]";
+		return "Recipe [id=" + id + ", name=" + name + ", vegeterian=" + vegeterian + ", ingredients="
+				+ Arrays.toString(ingredients) + ", instructions=" + Arrays.toString(instructions) + ", servings="
+				+ servings + "]";
 	}
 
 }

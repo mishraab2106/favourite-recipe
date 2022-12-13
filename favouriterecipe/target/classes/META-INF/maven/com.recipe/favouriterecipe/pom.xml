@@ -73,6 +73,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>favourite-recipe</finalName>
 	</build>
 
 </project>
