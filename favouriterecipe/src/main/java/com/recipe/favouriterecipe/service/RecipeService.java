@@ -22,8 +22,6 @@ public Object fetchRecipe(String name) {
 
 public List<Recipe>allrecipe() {
 	return repo.findAll();
-//	return repo.findallrecipe();
-//	return repo.findinstructionsrecipe();
 } 
 
 public String addNewRecipe(Recipe recipe) {
