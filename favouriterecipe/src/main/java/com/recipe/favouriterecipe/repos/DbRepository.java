@@ -23,8 +23,8 @@ public interface DbRepository extends JpaRepository<Recipe,Long>{
 	List<Recipe> findPotatoesAndservings(@Param("ingredients")String ingredients,@Param("servings") Long servings);
 	@Query(value="select * from recipe where ingredients NOT LIKE CONCAT ('%',:ingredients,'%') AND instructions LIKE CONCAT ('%',:instructions,'%')",nativeQuery = true)
 	List<Recipe> findOvenWithoutSalmon(@Param("ingredients")String ingredients,@Param("instructions")String instructions);
-//	@Query(value = "select * from recipe where ingredients LIKE CONCAT ('%',:ingredients,'%') AND servings= :servings AND LIKE CONCAT ('%',:instructions,'%') AND vegeterian= :vegeterian",nativeQuery = true)
-//	List<Recipe> findFilterRecipe(@Param("ingredients")String ingredients,@Param("servings") int servings,@Param("instructions")String instructions,@Param("vegeterian") String veg);
+	@Query(value = "select * from recipe where name LIKE CONCAT('%',:name,'%')",nativeQuery = true)
+	List<Recipe> fetchRecipe(@Param("name")String name);
 	
 	
 	@Query(value = "select * from recipe where ingredients iLIKE CONCAT ('%',:ingredients,'%') AND instructions iLIKE CONCAT ('%',:instructions,'%') AND servings= :servings AND vegeterian= :vegeterian",nativeQuery = true)
@@ -33,5 +33,16 @@ public interface DbRepository extends JpaRepository<Recipe,Long>{
 	@Query(value = "select * from recipe where ingredients  NOT iLIKE CONCAT ('%',:ingredients,'%') AND instructions  iLIKE CONCAT ('%',:instructions,'%') AND servings= :servings AND vegeterian= :vegeterian",nativeQuery = true)
 	List<Recipe> filterRecipeexclude(@Param("ingredients")String ingredients,@Param("servings")Long servings,@Param("instructions")String instructions,@Param("vegeterian")String vegeterian);
     
+	@Query(value = "select * from recipe where servings=:servings",nativeQuery = true)
+	List<Recipe> findByServings(@Param("servings")Long servings);
+	
+	@Query(value = "select * from recipe where ingredients iLIKE CONCAT ('%',:ingredients,'%')",nativeQuery = true)
+	List<Recipe> findByingredients(@Param("ingredients")String ingredients);
+	
+	@Query(value = "select * from recipe where ingredients NOT iLIKE CONCAT ('%',:ingredients,'%')",nativeQuery = true)
+	List<Recipe> findByExcludedIngredients(@Param("ingredients")String ingredients);
+	
+	@Query(value = "select * from recipe where instructions iLIKE CONCAT ('%',:instructions,'%')",nativeQuery = true)
+	List<Recipe> findByInstructions(@Param("instructions")String instructions);
 
 }

@@ -44,6 +44,12 @@ public String addNewRecipe(@Validated @RequestBody Recipe recipe){
 	return service.addNewRecipe(recipe);		
 }
 
+@RequestMapping(value = "/fetchrecipe", method = RequestMethod.GET)
+
+public Object addNewRecipe(@RequestParam String name){
+	return service.fetchRecipe(name);		
+}
+
 @PutMapping("/updaterecipe")
 public ResponseEntity<Recipe> updateRecipe(@RequestParam long id,@RequestBody Recipe recipe) {
 	Recipe updaterecipe=service.getById(id);
@@ -72,30 +78,48 @@ public List<Recipe> findfilteredreceipe(@RequestParam(value="ingredientsconditio
 	
 	System.out.println("servings "+servings);
 	System.out.println("instructions "+instructions);
+	System.out.println("ingredients "+ingredients);
 	System.out.println("veg "+veg);
-	if(ingredients.equals("")&&instructions.equals("")&&servings==null) {
-			return service.findVegeterian(veg);
-	}
-	return service.findFilterRecipe(ingredientscondition,ingredients, servings, instructions, veg);
-
-	}
+	if(ingredients.equals("")&&instructions.equals("")&&servings==null&&!veg.equals("")) {
+		return service.findVegeterian(veg);
+	} 
+	else if(instructions.equals("")&&veg.equals("")&& servings !=null){
+		System.out.println(" into elseif ingredients "+ingredients);
+		System.out.println("servings "+servings);
+		return service.findPotatoesAndServings(ingredients,servings);
 		
-					
-
-
+	} 
+	else if(instructions.equals("")&&veg.equals("")&&ingredients.equals("")&&servings!=null) {
+		return service.findByServings(servings);
+	} 
+	else if(instructions.equals("")&&veg.equals("")&&servings==null&&!ingredients.equals("")) {
+		System.out.println(" into 3rd elseif ingredients "+ingredients);
+		return service.findByingredients(ingredients,ingredientscondition);
+	}
+	else if (ingredients.equals("")&&veg.equals("")&&servings==null&&!instructions.equals("")) {
+		System.out.println(" into 4th elseif instructions "+instructions);
+		return service.findByInstructions(instructions);
+	} 
+	else if(ingredientscondition.equals("exclude")&&!ingredients.equals("")&&veg.equals("")&&servings==null&&!instructions.equals("")) {
+		System.out.println(" into 5th elseif instructions "+instructions);
+		return service.findOvenWithoutSalmon(ingredients,instructions);	
+	}
+	
+	else {
+		
+		System.out.println(" into 6th elseif instructions "+instructions);
+		return service.findFilterRecipe(ingredientscondition,ingredients, servings, instructions, veg);
+	}	
+	}							
 @GetMapping(value = "/recipewithingandservings")
 public List<Recipe> findPotatoesAndServings(@RequestParam("ingredients") String ingredients,@RequestParam("servings") int servings){
 		
-	return service.findPotatoesAndServings(ingredients,servings);
-		
+	return service.findPotatoesAndServings(ingredients,servings);		
 }
 
 @GetMapping(value = "/recipewithoutingandins")
 public List<Recipe> findOvenWithoutSalmon(@RequestParam("ingredients") String ingredients,@RequestParam("instructions") String instructions){
 	System.out.println("ingredients "+ingredients);
-	return service.findOvenWithoutSalmon(ingredients,instructions);
-		
+	return service.findOvenWithoutSalmon(ingredients,instructions);		
 }
-
-
 }

@@ -29,14 +29,30 @@ Fetch all recipe
 
 http://localhost:8080/allrecipe
 
+Fetch Recipe by name
+http://localhost:8080/fetchrecipe?name=salmon
+
 Rest API for All vegetarian recipes
 http://localhost:8080/filterrecipe?veg=yes
 
+Rest API for servings filter
+http://localhost:8080/filterrecipe?servings=4
+
+Rest API for ingredients filter either include or exclude
+http://localhost:8080/filterrecipe?ingredients=chicken&ingredientscondition=exclude
+
+http://localhost:8080/filterrecipe?ingredients=chicken&ingredientscondition=include
+
+Rest API for instructions filter
+http://localhost:8080/filterrecipe?instructions=boiling
+
 Rest API for Recipes that can serve 4 persons and have “potatoes” as an ingredient
-http://localhost:8080/recipewithingandservings?ingredients=potatoes&servings=4
+
+http://localhost:8080/filterrecipe?ingredients=potatoes&servings=4
+
 
 Rest API for Recipes without “salmon” as an ingredient that has “oven” in the instructions.
-http://localhost:8080/recipewithoutingandins?ingredients=salmon&instructions=oven
+http://localhost:8080/filterrecipe?ingredients=salmon&instructions=oven&ingredientscondition=exclude
 
-Rest API with all the filters intact
+Rest API with all the filters inplace
 http://localhost:8080/filterrecipe?ingredientscondition=include&servings=3&instructions=boil water&veg=yes&ingredients=lentils

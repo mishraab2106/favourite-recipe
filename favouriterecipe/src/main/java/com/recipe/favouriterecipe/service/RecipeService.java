@@ -16,6 +16,9 @@ public class RecipeService {
 private DbRepository repo;
 @Autowired
 private Recipe recipe;
+public Object fetchRecipe(String name) {
+	return repo.fetchRecipe(name);
+}
 
 public List<Recipe>allrecipe() {
 	return repo.findAll();
@@ -35,6 +38,10 @@ public List<Recipe>findPotatoesAndServings(String ingredients,long servings) {
 
 public List<Recipe>findVegeterian(String veg) {
 	return repo.findByvegeterian(veg);
+
+} 
+public List<Recipe>findByServings(Long servings) {
+	return repo.findByServings(servings);
 
 } 
 public List<Recipe>findOvenWithoutSalmon(String ingredients,String instructions) {
@@ -67,6 +74,20 @@ public List<Recipe> findFilterRecipe(String ingredientscondition,String ingredie
 		
 
 	}
+
+public List<Recipe> findByingredients(String ingredients,String ingredientscondition) {
+	if (ingredientscondition.equals("exclude")) {
+		return repo.findByExcludedIngredients(ingredients);
+	} else {
+		return repo.findByingredients(ingredients);
+	}
+	
+}
+
+public List<Recipe> findByInstructions(String instructions) {
+	// TODO Auto-generated method stub
+	return repo.findByInstructions(instructions);
+}
 	
 
 }
