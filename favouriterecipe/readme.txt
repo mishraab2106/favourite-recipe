@@ -1,12 +1,21 @@
+Deployment Instructions:-
 
-docker build -t favourite-recipe.jar .
+Steps to dockerize and and run the application
+
+Navigate to project folder where the Dockerfile exists and run the below build command
 
 Step 1: Run command from the project directory favouriterecipe
 docker build -t favourite-recipe.jar .
 
+The same project folder also has the db folder so run the below docker command to persist the data. This db has sample data within it. 
 Step 2: Run the below command to start the image and persist the data
 
 docker run -d -v C:\Users\Mishr\Documents\GitHub\favourite-recipe\favouriterecipe\db:/etc/db -p 8080:8080 favourite-recipe.jar
+
+
+
+
+docker run -d -v C:\Users\Mishr\Documents\GitHub\favourite-recipe\favouriterecipe\db:./db -p 8080:8080 favourite-recipe.jar
 
 docker run -d -v <project folder path on local>\db:<folder on remote> -p 8080:8080 favourite-recipe.jar
 
@@ -14,6 +23,7 @@ for example C:\Users\Mishr\Documents\GitHub\favourite-recipe\favouriterecipe  is
 
 
 
+Below are the Rest APIs which have been exposed and can be tested once the application starts running
 
 Add a Recipe
 
