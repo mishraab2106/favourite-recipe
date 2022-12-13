@@ -1,4 +1,18 @@
 
+docker build -t favourite-recipe.jar .
+
+Step 1: Run command from the project directory codingtask
+docker build -t favourite-recipe.jar .
+
+Step 2: Run the below command to start the image and persist the data
+docker run -v etc:/etc -p 8080:8080 favourite-recipe.jar 
+
+docker run -d -v C:\Users\Mishr\Documents\GitHub\favourite-recipe\favouriterecipe\data:/etc/db -p 8080:8080 favourite-recipe.jar
+
+docker run -d -v <folder on local>:<folder on remote> -p 8080:8080 favourite-recipe.jar
+
+C:\Users\Mishr\Documents\GitHub\favourite-recipe\favouriterecipe\data
+
 Add a Recipe
 
 http://localhost:8080/addrecipe

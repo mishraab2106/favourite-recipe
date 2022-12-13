@@ -3,6 +3,7 @@ package com.recipe.favouriterecipe.exceptions;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -25,6 +26,13 @@ public class GlobalExceptions {
 		resp.put(fieldName,message);
 		});
 		return new ResponseEntity<Map <String,String>>(resp,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	@ExceptionHandler(EmptyResultDataAccessException.class)
+	public ResponseEntity<String> dataNotFound(EmptyResultDataAccessException ex){
+
+		return new ResponseEntity<String>("Please check the data id provided",HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(Exception.class)

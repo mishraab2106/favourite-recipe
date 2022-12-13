@@ -73,14 +73,9 @@ public List<Recipe> findfilteredreceipe(@RequestParam(value="ingredientsconditio
 	System.out.println("servings "+servings);
 	System.out.println("instructions "+instructions);
 	System.out.println("veg "+veg);
-//	System.out.println("ingredients "+ingredients);
 	if(ingredients.equals("")&&instructions.equals("")&&servings==null) {
 			return service.findVegeterian(veg);
 	}
-//	else if(instructions.equals("")&&servings==null&&veg.equals("")) {
-//		System.out.println("ingredients "+ingredients);
-//		return service.findPotatoesAndServings(ingredients,servings);
-//	} else {
 	return service.findFilterRecipe(ingredientscondition,ingredients, servings, instructions, veg);
 
 	}
